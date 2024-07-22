@@ -78,6 +78,34 @@ print(var(salary,na.rm = TRUE))
 print(sd(salary,na.rm = TRUE))
 
 
+# Task E:
+#Extract Actors Whose Eye Color Is Not Black and Height Is Over 150m
+#Add a Column for Body Mass Index (BMI) and Plot
+
+data("starwars")
+
+# Extract actors whose eye color is not black and height is over 150 meters
+filtered_data <- starwars %>%
+  filter(eye_color != "black", height > 150)
+
+# Display the result
+print(filtered_data)
+
+# Add BMI column to the dataset
+starwars_with_bmi <- starwars %>%
+  mutate(BMI = mass / ((height / 100) ^ 2))
+
+# Display the updated dataset with BMI
+print(starwars_with_bmi)
+
+# Plot height against BMI
+ggplot(starwars_with_bmi, aes(x = height, y = BMI)) +
+  geom_point() +
+  labs(title = "Height vs. BMI in Star Wars Characters",
+       x = "Height (cm)",
+       y = "BMI") +
+  theme_minimal()
+
 
 
 
