@@ -1,8 +1,8 @@
 import pandas as pd
 
 # Load your data from the Excel file (replace with your actual file path and sheet name)
-file_path = 'e-shop clothing 2008 raw.xlsx'
-sheet_name = 'e-shop clothing 2008'
+file_path = 'input.xlsx'
+sheet_name = 'input'
 df = pd.read_excel(file_path, sheet_name=sheet_name, header=None)
 
 # Split the entire row into separate columns
