@@ -1,10 +1,15 @@
 library(readxl)
 library(dplyr)
 library(ggplot2)
+library(dplyr)
 
 # Load the data
 eshop <- read_excel('e-shop clothing 2008.xlsx')
 file_input <- read_excel('input.xlsx')
+
+#Make Sure Data Is Loaded
+head(eshop,4)
+tail(file_input,5)
 
 #task B:
   # Calculate total sales per year and month
@@ -41,7 +46,38 @@ ggplot(revenue, aes(x = factor(month), y = revenue_per_month, fill = factor(year
   theme(axis.text.x = element_text(angle = 90, hjust = 1))
 
 #Task D:
-  #
+  #Using input.xlsx with the salary column
+  #The mean, 
+  #Median 
+  #mode, 
+  #Standard Deviation 
+  #Variance of the salary column.
+
+#Getting the salary column
+salary <- file_input$salary
+print(salary)
+
+#Mean Of salary
+print(mean(salary,na.rm = TRUE))
+
+#Median of salary
+print(median(salary,na.rm = TRUE))
+
+#Mode of Salary
+Mode_function <- function(value){
+  ux <- unique(value)
+  ux[which.max(tabulate(match(value,ux)))]
+}
+
+print(Mode_function(salary))
+
+#Variance of Salary
+print(var(salary,na.rm = TRUE))
+
+#Standard Deviation of salary
+print(sd(salary,na.rm = TRUE))
+
+
 
 
 

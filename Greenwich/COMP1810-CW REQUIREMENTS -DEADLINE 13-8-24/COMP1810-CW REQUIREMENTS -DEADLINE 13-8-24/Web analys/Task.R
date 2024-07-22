@@ -6,10 +6,15 @@ library(ggplot2)
 eshop <- read_excel('e-shop clothing 2008.xlsx')
 file_input <- read_excel('input.xlsx')
 
+#Make Sure Data Is Loaded
+head(eshop,4)
+tail(file_input,5)
+
 #task B:
   # Calculate total sales per year and month
   # Making the  Chart
-# Calculate total sales per year and month
+
+# total sales of year and month
 monthly_sales <- eshop %>%
   group_by(year, month) %>%
   summarise(total_sales = sum(`order(sells)`))
@@ -17,13 +22,16 @@ monthly_sales <- eshop %>%
 # Print the result
 print(monthly_sales)
 
-#Sale Chart
+#The Sale Chart in Line Chart
 ggplot(monthly_sales, aes(x = month, y = total_sales)) + geom_line()
        + labs(title = "Doanh thu thang", x = "Thang", y ="Doanh Thu")
        +theme(axis.text.x =  element_text(angle = 90, hjust = 1))
 
-#Calculate revenue per month
+#Task C:
+  #Revenue per month
+  #Showing the chart
 
+#Calculate revenue per month
 revenue <- eshop %>%
   group_by(year, month) %>%
   summarise(revenue_per_month = sum(price))
@@ -35,6 +43,40 @@ ggplot(revenue, aes(x = factor(month), y = revenue_per_month, fill = factor(year
   geom_bar(stat = "identity", position = "dodge") +
   labs(title = "Revenue", x = "Month", y = "Revenue") +
   theme(axis.text.x = element_text(angle = 90, hjust = 1))
+
+#Task D:
+  #Using input.xlsx with the salary column
+  #The mean, 
+  #Median 
+  #mode, 
+  #Standard Deviation 
+  #Variance of the salary column.
+
+#Getting the salary column
+salary <- file_input$salary
+print(salary)
+
+#Mean Of salary
+print(mean(salary,na.rm = TRUE))
+
+#Median of salary
+print(median(salary,na.rm = TRUE))
+
+#Mode of Salary
+Mode_function <- function(value){
+  ux <- unique(value)
+  ux[which.max(tabulate(match(value,ux)))]
+}
+
+print(Mode_function(salary))
+
+#Variance of Salary
+print(var(salary,na.rm = TRUE))
+
+#Standard Deviation of salary
+print(sd(salary,na.rm = TRUE))
+
+
 
 
 
