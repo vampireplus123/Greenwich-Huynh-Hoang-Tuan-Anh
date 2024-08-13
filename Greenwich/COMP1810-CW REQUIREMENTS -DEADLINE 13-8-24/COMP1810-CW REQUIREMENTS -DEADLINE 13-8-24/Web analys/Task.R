@@ -1,7 +1,7 @@
 library(readxl)
 library(dplyr)
 library(ggplot2)
-library(dplyr)
+
 
 # Load the data
 eshop <- read_excel('e-shop clothing 2008.xlsx')
@@ -12,7 +12,7 @@ head(eshop,4)
 tail(file_input,5)
 
 #task B:
-  # Calculate total sales per year and month
+  # Calculate total sales per month
   # Making the  Chart
 
 # total sales of year and month
@@ -25,7 +25,7 @@ print(monthly_sales)
 
 #The Sale Chart in Line Chart
 ggplot(monthly_sales, aes(x = month, y = total_sales)) + geom_line()
-       + labs(title = "Doanh thu thang", x = "Thang", y ="Doanh Thu")
+       + labs(title = "Monthly Sales", x = "Month", y ="Sale")
        +theme(axis.text.x =  element_text(angle = 90, hjust = 1))
 
 #Task C:
